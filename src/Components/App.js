@@ -3,7 +3,13 @@ import React from "react";
 class App extends React.Component {
   constructor() {
     super();
-    this.state = { system: "US", windspeed: null, temperature: null };
+    this.state = {
+      system: "US",
+      windspeed: null,
+      temperature: null,
+      windchillF: null,
+      windchillC: null
+    };
   }
 
   onSystemChange = event => {
@@ -21,17 +27,20 @@ class App extends React.Component {
   windChill = () => {
     const temp = this.state.temperature;
     const wind = this.state.windspeed;
+
     const windChillCalc = Math.round(
       35.74 +
-        0.6215 * temp -
-        35.75 * Math.pow(wind, 0.16) +
-        0.4275 * temp * Math.pow(wind, 0.16)
+      0.6215 * temp -
+      35.75 * Math.pow(wind, 0.16) +
+      0.4275 * temp * Math.pow(wind, 0.16)
     );
-    //   (3.71 * Math.pow(wind, 0.5) + 5.81 - 0.25 * wind) *
-    //   (temp - 91.4) +
-    // 91.4;
+    this.setState({ windchillF: windChillCalc });
 
-    console.log(windChillCalc);
+    const convertToC = (this.state.windchillF - 32) * 5 / 9;
+
+    this.setState({ windchillC: convertToC });
+
+    ;
   };
 
   // converterFtoC = () => {
@@ -62,7 +71,7 @@ class App extends React.Component {
           onChange={this.onTemperatureChange}
         />
         <button onClick={this.windChill}>Calculate</button>
-        feels like {this.windChill}
+        feels like {this.state.windchillF}
       </div>
     );
   }
