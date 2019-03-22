@@ -1,5 +1,6 @@
 import React from "react";
 
+
 class App extends React.Component {
   constructor() {
     super();
@@ -7,8 +8,7 @@ class App extends React.Component {
       system: "US",
       windspeed: null,
       temperature: null,
-      windchillF: null,
-      windchillC: null
+      windchill: null,
     };
   }
 
@@ -28,30 +28,31 @@ class App extends React.Component {
     const temp = this.state.temperature;
     const wind = this.state.windspeed;
 
-    const windChillCalc = Math.round(
-      35.74 +
-      0.6215 * temp -
-      35.75 * Math.pow(wind, 0.16) +
-      0.4275 * temp * Math.pow(wind, 0.16)
-    );
-    this.setState({ windchillF: windChillCalc });
+    if (this.state.system === "US") {
 
-    const convertToC = (this.state.windchillF - 32) * 5 / 9;
+      const windChillCalcF =
+        Math.round(
+          35.74 +
+          0.6215 * temp -
+          35.75 * Math.pow(wind, 0.16) +
+          0.4275 * temp * Math.pow(wind, 0.16)
+        )
 
-    this.setState({ windchillC: convertToC });
+      this.setState({ windchill: windChillCalcF });
+    } else {
+      const windChillCalcC = Math.round(
+        13.12 + (0.6215 * temp) -
+        11.37 * Math.pow(wind, 0.16) +
+        (0.3965 * temp * Math.pow(wind, 0, 16))
+      )
+      this.setState({ windchill: windChillCalcC });
+    }
 
-    ;
   };
 
-  // converterFtoC = () => {
-  //   const InternationalUnits = updatedWindChill;
-  //   const updatedWindChill = windChill - (32 * 5) / 9;
-  //   console.log(converterFtoC);
-  // };
-
-  //const calc = 35.74 + 0.6215 * temperature - 35.75  Match.pow(windspeed,  0.16)  + 0.4275 * userTemperautre * Match.pow(userWindspeed, 0.16)
-
   render() {
+    const { windchill } = this.state
+
     console.log(this.state);
     return (
       <div>
@@ -71,7 +72,7 @@ class App extends React.Component {
           onChange={this.onTemperatureChange}
         />
         <button onClick={this.windChill}>Calculate</button>
-        feels like {this.state.windchillF}
+        feels like {windchill}
       </div>
     );
   }
