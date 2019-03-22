@@ -1,6 +1,5 @@
 import React from "react";
 
-
 class App extends React.Component {
   constructor() {
     super();
@@ -8,7 +7,7 @@ class App extends React.Component {
       system: "US",
       windspeed: null,
       temperature: null,
-      windchill: null,
+      windchill: null
     };
   }
 
@@ -29,46 +28,55 @@ class App extends React.Component {
     const wind = this.state.windspeed;
 
     if (this.state.system === "US") {
-
-      const windChillCalcF =
-        Math.round(
-          35.74 +
+      const windChillCalc = Math.round(
+        35.74 +
           0.6215 * temp -
           35.75 * Math.pow(wind, 0.16) +
           0.4275 * temp * Math.pow(wind, 0.16)
-        )
+      );
 
-      this.setState({ windchill: windChillCalcF });
+      this.setState({ windchill: windChillCalc });
     } else {
-      const windChillCalcC = Math.round(
-        13.12 + (0.6215 * temp) -
-        11.37 * Math.pow(wind, 0.16) +
-        (0.3965 * temp * Math.pow(wind, 0, 16))
-      )
-      this.setState({ windchill: windChillCalcC });
+      const windChillCalc = Math.round(
+        15.12 +
+          0.6215 * temp -
+          11.37 * Math.pow(wind, 0.16) +
+          0.3965 * temp * Math.pow(wind, 0, 16)
+      );
+      this.setState({ windchill: windChillCalc });
     }
-
   };
 
-  render() {
-    const { windchill } = this.state
+  // unitSystemDetails = () => {
+  //   if (this.state.system === "US") {
+  //     const selectedTemperature = "F";
+  //     const selectedWindspeed = "MP/H";
+  //   } else {
+  //     const selectedTemperature = "C";
+  //     const selectedWindspeed = "KM/H";
+  //   }
+  // };
 
-    console.log(this.state);
+  render() {
+    const { windchill } = this.state;
     return (
       <div>
-        <form>
-          <label>
-            <p>Select metric system, please</p>
-            <select onChange={this.onSystemChange}>
-              <option value="International">International</option>
-              <option value="US">US</option>
-            </select>
-          </label>
-        </form>
-        <input type="text" name="windspeed" onChange={this.onWindspeedChange} />
+        <div>
+          <p>Select metric system, please</p>
+          <select onChange={this.onSystemChange}>
+            <option value="International">International</option>
+            <option value="US">US</option>
+          </select>
+        </div>
         <input
-          type="text"
-          name="temperature"
+          type="number"
+          placeholder="Wind speed"
+          onChange={this.onWindspeedChange}
+          required
+        />
+        <input
+          type="number"
+          placeholder="Temperature"
           onChange={this.onTemperatureChange}
         />
         <button onClick={this.windChill}>Calculate</button>
