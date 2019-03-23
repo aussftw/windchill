@@ -4,7 +4,10 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      system: "US",
+      system: {
+        US: { temperature: "", windspeed: "" },
+        International: { temperature: "", windspeed: "" }
+      },
       windspeed: null,
       temperature: null,
       windchill: null
@@ -51,13 +54,18 @@ class App extends React.Component {
   //   if (this.state.system === "US") {
   //     const selectedTemperature = "F";
   //     const selectedWindspeed = "MP/H";
+  //     this.setState({ system: { temperature: selectedTemperature } });
+  //     this.setState({ system: { windspeed: selectedWindspeed } });
   //   } else {
   //     const selectedTemperature = "C";
   //     const selectedWindspeed = "KM/H";
+  //     this.setState({ system: { temperature: selectedTemperature } });
+  //     this.setState({ system: { windspeed: selectedWindspeed } });
   //   }
   // };
 
   render() {
+    console.log(this.state);
     const { windchill } = this.state;
     return (
       <div>
@@ -74,13 +82,17 @@ class App extends React.Component {
           onChange={this.onWindspeedChange}
           required
         />
+        <label htmlFor="wind-speed" className="inline-label">
+          {this.state.windspeed}
+        </label>
         <input
           type="number"
           placeholder="Temperature"
           onChange={this.onTemperatureChange}
+          required
         />
         <button onClick={this.windChill}>Calculate</button>
-        feels like {windchill}
+        <span>feels like {windchill}</span>
       </div>
     );
   }
