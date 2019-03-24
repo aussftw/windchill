@@ -1,13 +1,12 @@
 import React from "react";
+import "./App.css";
+import Footer from "./footer/footer";
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      system: {
-        US: { temperature: "", windspeed: "" },
-        International: { temperature: "", windspeed: "" }
-      },
+      system: "US",
       windspeed: null,
       temperature: null,
       windchill: null
@@ -50,49 +49,62 @@ class App extends React.Component {
     }
   };
 
-  // unitSystemDetails = () => {
-  //   if (this.state.system === "US") {
-  //     const selectedTemperature = "F";
-  //     const selectedWindspeed = "MP/H";
-  //     this.setState({ system: { temperature: selectedTemperature } });
-  //     this.setState({ system: { windspeed: selectedWindspeed } });
-  //   } else {
-  //     const selectedTemperature = "C";
-  //     const selectedWindspeed = "KM/H";
-  //     this.setState({ system: { temperature: selectedTemperature } });
-  //     this.setState({ system: { windspeed: selectedWindspeed } });
-  //   }
-  // };
+  renderResult() {
+    const { windchill } = this.state;
+    if (this.state.system === "US") {
+      return (
+        <span>
+          {" "}
+          feels like {windchill}
+          <span>&#8457;</span>{" "}
+        </span>
+      );
+    } else {
+      return (
+        <span>
+          {" "}
+          feels like {windchill}
+          <span>&#8451;</span>
+        </span>
+      );
+    }
+  }
 
   render() {
     console.log(this.state);
-    const { windchill } = this.state;
+
     return (
       <div>
-        <div>
-          <p>Select metric system, please</p>
-          <select onChange={this.onSystemChange}>
-            <option value="International">International</option>
-            <option value="US">US</option>
-          </select>
+        <div className="container">
+          <div className="metric_selector">
+            <h1>Windchill calculator</h1>
+            <p>Select metric system, please</p>
+            <select onChange={this.onSystemChange}>
+              <option value="International">International</option>
+              <option value="US">US</option>
+            </select>
+          </div>
+          <div className="inputs">
+            <input
+              type="number"
+              placeholder="Wind speed"
+              onChange={this.onWindspeedChange}
+              required
+            />
+            <label htmlFor="wind-speed" className="inline-label">
+              {this.state.windspeed}
+            </label>
+            <input
+              type="number"
+              placeholder="Temperature"
+              onChange={this.onTemperatureChange}
+              required
+            />
+          </div>
+          <button onClick={this.windChill}>Calculate</button>
+          {this.renderResult()}
         </div>
-        <input
-          type="number"
-          placeholder="Wind speed"
-          onChange={this.onWindspeedChange}
-          required
-        />
-        <label htmlFor="wind-speed" className="inline-label">
-          {this.state.windspeed}
-        </label>
-        <input
-          type="number"
-          placeholder="Temperature"
-          onChange={this.onTemperatureChange}
-          required
-        />
-        <button onClick={this.windChill}>Calculate</button>
-        <span>feels like {windchill}</span>
+        <Footer />
       </div>
     );
   }
