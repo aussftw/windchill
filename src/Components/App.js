@@ -78,7 +78,7 @@ class App extends React.Component {
       <div>
         <div className="container">
           <div className="metric_selector">
-            <h1>Windchill calculator</h1>
+            <h1 className="app_title">Windchill calculator</h1>
             <p>Select metric system, please</p>
             <select onChange={this.onSystemChange}>
               <option value="International">International</option>
@@ -87,8 +87,9 @@ class App extends React.Component {
           </div>
           <div className="inputs">
             <input
+              className="input"
               type="number"
-              placeholder="Wind speed"
+              placeholder="  Wind speed"
               onChange={this.onWindspeedChange}
               required
             />
@@ -96,14 +97,20 @@ class App extends React.Component {
               {this.state.windspeed}
             </label>
             <input
+              className="input"
               type="number"
-              placeholder="Temperature"
+              placeholder="  Temperature"
               onChange={this.onTemperatureChange}
               required
             />
+            <label htmlFor="wind-speed" className="inline-label">
+              {this.state.temperature}
+            </label>
           </div>
-          <button onClick={this.windChill}>Calculate</button>
-          {this.renderResult()}
+          <button className="calc" onClick={this.windChill}>
+            Calculate
+          </button>
+          <div className="result">{this.renderResult()}</div>
         </div>
         <Footer />
       </div>

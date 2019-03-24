@@ -1,0 +1,10 @@
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(to right, rgb(181, 88, 88), rgb(25, 35, 86));
+}
+button {
+  cursor: pointer;
+}
