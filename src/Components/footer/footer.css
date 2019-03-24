@@ -1,18 +1,39 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins");
 
-footer {
+.footer-container {
   display: flex;
-  list-style: none;
   justify-content: center;
-  font-family: "Poppins", sans-serif;
-  font-size: 1rem;
-  color: #fafafa;
+  text-align: center;
+  padding: 1.2rem;
+  padding-bottom: 2rem;
   background-color: black;
   width: 100%;
+  position: fixed;
+  bottom: 0;
 }
 .brown {
   display: inline;
   color: #bb3737;
   font-weight: bold;
+  font-size: 2.5rem;
+}
+
+.footer-text {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.5rem;
+  color: #fafafa;
+  margin-top: 0.5rem;
+}
+
+.footer-text-extented {
+  margin-top: 0.5rem;
   font-size: 1.2rem;
+}
+
+.socials {
+  margin-left: 1rem;
+}
+
+i {
+  color: red;
 }
