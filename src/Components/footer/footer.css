@@ -41,7 +41,7 @@ i {
   color: #e75559;
 }
 
-@media screen and (max-width: 40rem) {
+@media only screen and (min-device-width: 320px) and (max-device-height: 568px) {
   .footer-container {
     padding: 1.2rem;
   }
@@ -60,6 +60,28 @@ i {
   .footer-text-extented {
     margin-top: 0.1rem;
     font-size: 0.9rem;
+    margin-bottom: 0.2rem;
+  }
+}
+@media only screen and (min-device-width: 375px) and (max-device-height: 667px) {
+  .footer-container {
+    padding: 1.2rem;
+  }
+  .footer-text {
+    height: 3rem;
+    font-size: 1.4rem;
+    margin-top: 0.1rem;
+    padding: 0.2rem;
+    padding-bottom: 0.5rem;
+    background: none;
+    font-weight: 100;
+  }
+  .brown {
+    font-size: 1.2rem;
+  }
+  .footer-text-extented {
+    margin-top: 0.1rem;
+    font-size: 1.1rem;
     margin-bottom: 0.2rem;
   }
 }

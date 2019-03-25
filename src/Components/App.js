@@ -97,15 +97,14 @@ class App extends React.Component {
             <input
               className="input"
               type="number"
-              placeholder="  Wind speed"
+              placeholder="Wind speed"
               onChange={this.onWindspeedChange}
               required
             />
             <input
               className="input"
               type="number"
-              max="451"
-              placeholder="  Temperature"
+              placeholder="Temperature"
               onChange={this.onTemperatureChange}
               required
             />
