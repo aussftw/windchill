@@ -15,19 +15,19 @@
   display: inline;
   color: #bb3737;
   font-weight: bold;
-  font-size: 2.5rem;
+  font-size: 2rem;
 }
 
 .footer-text {
   font-family: "Poppins", sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: #fafafa;
   margin-top: 0.5rem;
 }
 
 .footer-text-extented {
   margin-top: 0.5rem;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 .socials {
@@ -35,5 +35,5 @@
 }
 
 i {
-  color: red;
+  color: #fafafa;
 }

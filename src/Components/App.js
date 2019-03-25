@@ -10,7 +10,8 @@ class App extends React.Component {
       system: "US",
       windspeed: null,
       temperature: null,
-      windchill: null
+      windchill: null,
+      showResult: false
     };
   }
 
@@ -39,6 +40,7 @@ class App extends React.Component {
       );
 
       this.setState({ windchill: windChillCalc });
+      this.setState({ showResult: true });
     } else {
       const windChillCalc = Math.round(
         15.12 +
@@ -47,6 +49,7 @@ class App extends React.Component {
           0.3965 * temp * Math.pow(wind, 0, 16)
       );
       this.setState({ windchill: windChillCalc });
+      this.setState({ showResult: true });
     }
   };
 
@@ -55,7 +58,6 @@ class App extends React.Component {
     if (this.state.system === "US") {
       return (
         <span>
-          {" "}
           feels like {windchill}
           <span>&#8457;</span>{" "}
         </span>
@@ -63,7 +65,6 @@ class App extends React.Component {
     } else {
       return (
         <span>
-          {" "}
           feels like {windchill}
           <span>&#8451;</span>
         </span>
@@ -93,9 +94,6 @@ class App extends React.Component {
               onChange={this.onWindspeedChange}
               required
             />
-            <label htmlFor="wind-speed" className="inline-label">
-              {this.state.windspeed}
-            </label>
             <input
               className="input"
               type="number"
@@ -103,14 +101,16 @@ class App extends React.Component {
               onChange={this.onTemperatureChange}
               required
             />
-            <label htmlFor="wind-speed" className="inline-label">
-              {this.state.temperature}
-            </label>
           </div>
           <button className="calc" onClick={this.windChill}>
             Calculate
           </button>
-          <div className="result">{this.renderResult()}</div>
+          *{" "}
+          <div>
+            {this.state.showResult ? (
+              <div className="result">{this.renderResult()}</div>
+            ) : null}
+          </div>
         </div>
         <Footer />
       </div>
