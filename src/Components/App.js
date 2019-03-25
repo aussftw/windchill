@@ -105,7 +105,6 @@ class App extends React.Component {
           <button className="calc" onClick={this.windChill}>
             Calculate
           </button>
-          *{" "}
           <div>
             {this.state.showResult ? (
               <div className="result">{this.renderResult()}</div>

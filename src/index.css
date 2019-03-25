@@ -3,11 +3,8 @@ body {
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: url("./images/rainbow-937042_1920.jpg") center/cover;
 }
 button {
   cursor: pointer;
-}
-
-.background {
-  background: url("/images/rainbow-937042_1920.jpg") center/cover;
 }
