@@ -12,7 +12,7 @@
   left: 50%;
   top: 40%;
   transform: translate(-50%, -50%);
-  height: 40%;
+  height: 48%;
   padding: 1rem;
 }
 
@@ -33,6 +33,7 @@
 
 p {
   color: #ff948f;
+  font-size: 1.2rem;
 }
 
 select {
@@ -40,10 +41,14 @@ select {
   background-color: #8381ca;
   color: #ff7595;
   padding: 8px 16px;
-  border: 0.2rem;
+
   border-radius: 2rem 1rem;
+  border: #8381ca;
   cursor: pointer;
   font-weight: 300;
+  text-align-last: center;
+  padding-right: 29px;
+  direction: rtl;
 }
 
 select:focus {
@@ -66,12 +71,15 @@ select {
   margin: 0.2rem;
   border-color: #8381ca;
   border-radius: 2rem 1rem 3rem;
-  width: 80%;
+  width: 50%;
   height: 2.2rem;
-  font-weight: 500;
+  font-size: 1.8rem;
   background: #8381ca;
   color: #ffffff;
   text-align: center;
+  padding-bottom: 0.2rem;
+
+  font-family: "Gloria Hallelujah";
 }
 
 .input::placeholder {
@@ -95,7 +103,7 @@ input:focus {
   border-radius: 1rem 0.5rem;
   font-size: 1.5rem;
   color: #ff7595;
-  border: 0.2rem solid #8381ca;
+  border-color: #8381ca;
 }
 
 button:focus {
@@ -109,7 +117,87 @@ button:hover {
 .result {
   color: #ff948f;
   font-weight: 500;
-  font-size: 2.5rem;
-  margin: 0.5rem;
+  font-size: 2rem;
+  margin: 1rem;
+
   font-family: "Gloria Hallelujah";
+}
+.number {
+  font-size: 3.3rem;
+  margin-top: 2.5rem;
+  font-weight: bold;
+  color: #e75559;
+}
+.unit_system {
+  padding-left: 1rem;
+}
+
+i {
+  padding-left: 0.4rem;
+}
+
+@media screen and (max-width: 320px) {
+  .container {
+    position: fixed;
+    width: 85%;
+    height: 80%;
+    padding: 1rem;
+    margin-top: 3rem;
+  }
+  .app_title {
+    font-size: 1.9rem;
+    padding-top: 1rem;
+  }
+  .metric_selector {
+    font-size: 1rem;
+    padding: 0.1rem;
+    margin-top: 0.3rem;
+  }
+  select {
+    margin-bottom: 0.4rem;
+    padding: 0.4rem 0.9rem;
+    border: 0.1rem;
+    border-radius: 2rem 1rem;
+    font-weight: 300;
+    width: 60%;
+    height: 2rem;
+  }
+  .input {
+    margin: 0.2rem;
+    height: 3rem;
+    color: #ff7595;
+    font-weight: bold;
+    font-size: 2.2rem;
+    padding-top: 0.5rem;
+  }
+
+  .input:focus {
+    color: #8381ca;
+  }
+  .input::placeholder {
+    font-size: 13px;
+    text-indent: -10px;
+  }
+
+  .calc {
+    width: 60%;
+    height: 3rem;
+    margin: 0.5rem;
+    border-radius: 1rem 0.5rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #ff7595;
+  }
+
+  .result {
+    color: #ff948f;
+    font-size: 2rem;
+    margin-top: 1.5rem;
+  }
+  .number {
+    font-size: 3.3rem;
+    margin-top: 2.5rem;
+    font-weight: bold;
+    color: #e75559;
+  }
 }

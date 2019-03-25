@@ -39,8 +39,7 @@ class App extends React.Component {
           0.4275 * temp * Math.pow(wind, 0.16)
       );
 
-      this.setState({ windchill: windChillCalc });
-      this.setState({ showResult: true });
+      this.setState({ windchill: windChillCalc, showResult: true });
     } else {
       const windChillCalc = Math.round(
         15.12 +
@@ -58,15 +57,23 @@ class App extends React.Component {
     if (this.state.system === "US") {
       return (
         <span>
-          feels like {windchill}
-          <span>&#8457;</span>{" "}
+          feels like{" "}
+          <div className="number">
+            {windchill}
+            <span className="unit_system">&#8457;</span>
+            <i className="thermometer half icon" />
+          </div>
         </span>
       );
     } else {
       return (
         <span>
-          feels like {windchill}
-          <span>&#8451;</span>
+          feels like{" "}
+          <div className="number">
+            {windchill}
+            <span className="unit_system">&#8451;</span>
+            <i className="thermometer half icon" />
+          </div>
         </span>
       );
     }
@@ -97,6 +104,7 @@ class App extends React.Component {
             <input
               className="input"
               type="number"
+              max="451"
               placeholder="  Temperature"
               onChange={this.onTemperatureChange}
               required
